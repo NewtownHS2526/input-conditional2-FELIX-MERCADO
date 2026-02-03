@@ -23,9 +23,9 @@
 //   3. The status message area (id="status")
 // --------------------------------------------
 
-const textBox = 
-const outputBox = 
-const statusBox = 
+const textBox = document.querySelector("#user-input")
+const outputBox = document.querySelector("#quiz-outputs")
+const statusBox = document.querySelector("#status")
 
 // This console.log helps us verify our selections worked correctly.
 // Open the browser's Developer Tools (F12) to see the output.
@@ -43,8 +43,8 @@ console.log(textBox, outputBox, statusBox);
 //   2. A "bonus" variable (boolean) initialized to false
 // --------------------------------------------
 
-let score = 
-let champlain = 
+let score = 0;
+let bonus = false;
 
 // --------------------------------------------
 // STEP 3: CREATE THE ANSWER-CHECKING FUNCTION
@@ -73,21 +73,21 @@ const checkAnswer = () => {
   //   - Display an error message in the statusBox
 
   if (currentAnswer === "Lake Superior" || currentAnswer === "Superior") {
-
+    document.body.innerHTML += "<h3>" + currentAnswer + " is Correct<h3>";
   } else if (currentAnswer === "Lake Michigan" || currentAnswer === "Michigan") {
-   
+    document.body.innerHTML += "<h3>" + currentAnswer + " is Correct<h3>";
   } else if (currentAnswer === "Lake Huron" || currentAnswer === "Huron") {
-  
+    document.body.innerHTML += "<h3>" + currentAnswer + " is Correct<h3>";
   } else if (currentAnswer === "Lake Erie" || currentAnswer === "Erie") {
-    
+    document.body.innerHTML += "<h3>" + currentAnswer + " is Correct<h3>";
   } else if (currentAnswer === "Lake Ontario" || currentAnswer === "Ontario") {
-
+    document.body.innerHTML += "<h3>" + currentAnswer + " is Correct<h3>";
   } else if (currentAnswer === "Lake Champlain" || currentAnswer === "Champlain") {
-    // Secret bonus answer!
-  
+    // Secret bonus answer!`
+  document.body.innerHTML += "<h3>Bonus<h3>"
   } else {
-    // If no conditions match, show an error message
-    
+    // If no conditions match, show an error messag
+  document.body.innerHTML += "<h3>Wrong<h3>"
   }
 
   // After checking the answer, verify if the game is complete
@@ -111,7 +111,7 @@ const checkAnswer = () => {
 
 const checkScore = () => {
   if (score === 5) {
- 
+    document.body.innerHTML += "<h1>GG!<h1>"
   }
   if (score === 5 && champlain) {
     
@@ -138,3 +138,8 @@ const checkScore = () => {
 //   - Calls the checkAnswer function when triggered
 // --------------------------------------------
 
+document.addEventListener("keydown", (Enter) => {
+  if (event.key === "Enter") {
+    checkAnswer();
+  }
+})
